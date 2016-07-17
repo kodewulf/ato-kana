@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="atoKana">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATO Kana</title>
+    <!-- Bootstrap css and my own css -->
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+    <div class="container">
+        <div class="page-header">
+            <h1>ATO Kana</h1>
+        </div>
+      
+      <div ng-controller="kanaCtrl as kc">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group">
+                <input ng-model="kc.search.products" type="text" class="form-control" placeholder="Search for product...">
+                <!--
+                <span class="input-group-btn">
+                  <button ng-click="kc.searchProducts()" class="btn btn-default" type="button">Go!</button>
+                </span>
+                -->
+              </div><!-- /input-group -->    
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <input ng-model="kc.search.locations" type="text" class="form-control" placeholder="Search for location...">
+                <!--
+                <span class="input-group-btn">
+                  <button ng-click="kc.searchLocations()" class="btn btn-default" type="button">Go!</button>
+                </span>
+                -->
+              </div><!-- /input-group -->          
+            </div>
+            
+            <div class="col-md-4">
+              <div class="input-group">
+                <input ng-model="kc.search.errors" type="text" class="form-control" placeholder="Search for error...">
+                <!--
+                <span class="input-group-btn">
+                  <button ng-click="kc.searchErrors()" class="btn btn-default" type="button">Go!</button>
+                </span>
+                -->
+              </div><!-- /input-group -->           
+            </div>
+          </div>          
+
+        <div class="row">
+          <div class="col-md-4">
+            <table id="searchTextResults">
+              <tr ng-repeat="product in kc.results.products | filter:kc.search.products">
+                <td>{{product}}</td>
+              </tr>
+            </table>              
+            </div>
+          <div class="col-md-4">
+            <table id="searchTextResults">
+              <tr ng-repeat="location in kc.results.locations | filter:kc.search.locations">
+                <td>{{location}}</td>
+              </tr>
+            </table>              
+          </div>
+          <div class="col-md-4">
+            <table id="searchTextResults">
+              <tr ng-repeat="error in kc.results.errors | filter:kc.search.errors">
+                <td>{{error}}</td>
+              </tr>
+            </table>              
+          </div>
+      </div>
+  </div>
+  
+    <!-- third party js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Our application scripts -->
+    <script src="data/data.js"></script>
+    <script src="data/products.js"></script>
+    <script src="data/locations.js"></script>
+    <script src="data/errors.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/kana.js"></script>  
+    <script src="js/factories/dataservice.js"></script>
+      
+</body>
+</html>
